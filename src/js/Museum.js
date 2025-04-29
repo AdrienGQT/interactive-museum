@@ -38,6 +38,6 @@ export class Museum{
     cacheDOM = () => {
         this.itemTemplate = document.querySelector('.item')
         this.itemTemplate.remove()
-        this.map = document.querySelector('body')
+        this.map = document.querySelector('#map')
     }
 }
