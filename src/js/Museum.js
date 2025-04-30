@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js"
 import { Item } from "./Item"
+import { ItemForm } from "./ItemForm"
 
 export class Museum{
     constructor(){
@@ -13,12 +14,17 @@ export class Museum{
 
     init = () => {
         this.initSupabase()
+        this.createItemForm()
         this.getItems()
         this.cacheDOM()
     }
 
     initSupabase = () => {
         this.supabase = createClient(this.supabaseUrl, this.supabaseKey)
+    }
+
+    createItemForm = () => {
+        new ItemForm(this.supabase)
     }
 
     getItems = async () => {

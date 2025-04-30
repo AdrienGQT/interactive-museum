@@ -7,20 +7,122 @@
     <title>interactive-museum</title>
     <link rel="stylesheet" href="/src/style.css" />
   </head>
-  <body>
-    <div class="item w-sm bg-red-300">
-      <img src="" alt="" class="itemImage" />
-      <p class="itemTitle"></p>
-      <p class="itemDate"></p>
-      <p class="itemLocation">
-        <span class="itemCity"></span>, <span class="itemCountry"></span>
-      </p>
-    </div>
+  <body class="bg-gray-100 text-sm">
     <h1>Interactive museum</h1>
-    <div id="map" class="relative flex flex-col gap-4">
 
+    <form id="itemForm" class="flex flex-col bg-gray-50 w-sm p-2 gap-2 rounded-md border-1 border-gray-300">
+      <p class="text-gray-900 font-semibold">Add a new photo</p>
+      <!-- Picture -->
+      <div class="flex flex-col">
+        <label for="formPhoto" >Upload Photo</label>
+        <input
+          type="file"
+          name="photo"
+          id="formPhoto"
+          accept="image/*"
+          required
+        />
+      </div>
+
+      <!-- Title -->
+      <div class="flex flex-col">
+        <label for="formTitle">Photo title</label>
+        <input
+        class="bg-gray-100 pl-[12px] pr-[12px] pt-2 pb-2 border-gray-300 border-1 rounded-sm placeholder:text-gray-400 active:border-gray-500"
+          type="text"
+          name="title"
+          id="formTitle"
+          placeholder="My Image Title"
+          pattern="^[A-Za-z0-9\s\-_,\.;:()]{3,50}$"
+          title="Title must be 3-50 characters and contain only letters, numbers, spaces and basic punctuation"
+          required
+        />
+      </div>
+
+      <!-- Location -->
+      <div class="flex flex-col">
+        <label for="isExistingLocation">The location already exists</label>
+        <input
+          type="checkbox"
+          name="isExistingLocation"
+          checked
+          id="formNewLocationCheckbox"
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="formLocation">Location</label>
+        <select name="location" id="formLocation" required>
+          <option value="" class="formLocationOption">Select a location</option>
+        </select>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="formCountry">Country</label>
+        <input
+        class="bg-gray-100 pl-[12px] pr-[12px] pt-2 pb-2 border-gray-300 border-1 rounded-sm placeholder:text-gray-400 active:border-gray-500"
+          type="text"
+          name="country"
+          id="formCountry"
+          placeholder="France"
+          pattern="^[A-Za-z\s\-']{2,56}$"
+          title="Enter a valid country name (2-56 characters, letters only)"
+          required
+        />
+      </div>
+
+      <div class="flex flex-col ">
+        <label for="formCity">City</label>
+        <input
+          class="bg-gray-100 pl-[12px] pr-[12px] pt-2 pb-2 border-gray-300 border-1 rounded-sm placeholder:text-gray-400 active:border-gray-500"
+          type="text"
+          name="city"
+          id="formCity"
+          placeholder="Paris"
+          pattern="^[A-Za-z\s\-'\.]{2,85}$"
+          title="Enter a valid city name (2-85 characters, letters and basic punctuation only)"
+          required
+        />
+      </div>
+
+      <!-- <div class="flex flex-col">
+        <button type="button" id="formAddLocation">Add location</button>
+      </div> -->
+
+      <!-- Date -->
+      <div class="flex flex-col">
+        <label for="formDate">Shooting date</label>
+        <input
+          type="date"
+          name="date"
+          id="formDate"
+          max="2030-12-12"
+          required
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <button id="formSubmit" type="submit" class="cursor-pointer text-gray-50 bg-green-700 border-1 border-green-600 pl-[12px] pr-[12px] pt-2 pb-2 rounded-sm hover:bg-green-600 hover:border-green-500">Add photo</button>
+      </div>
+    </form>
+
+    <div
+      class="item w-3xs bg-gray-50 flex flex-col gap-2 p-2 rounded-lg border-1 border-gray-300 text-gray-900 text-sm"
+    >
+      <img src="" alt="" class="itemImage rounded-sm" />
+      <div class="flex flex-col gap-1">
+        <p class="itemTitle font-medium"></p>
+        <div class="flex justify-between">
+          <p class="itemLocation font-regular text-gray-500">
+            <span class="itemCity"></span>, <span class="itemCountry"></span>
+          </p>
+          <p class="itemDate font-regular text-gray-500"></p>
+        </div>
+      </div>
     </div>
-   
+
+    <div id="map" class="relative flex flex-col gap-4"></div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
