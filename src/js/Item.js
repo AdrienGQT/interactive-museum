@@ -1,3 +1,9 @@
+import { gsap } from "gsap";
+    
+import { Draggable } from "gsap/Draggable";
+
+gsap.registerPlugin(Draggable);
+
 export class Item{
     constructor(payload, card){
         console.log('Item Initialized')
@@ -13,6 +19,7 @@ export class Item{
     init = () => {
         this.cacheHTML()
         this.editHTML()
+        this.initDraggable()
     }
 
     cacheHTML = () => {
@@ -30,5 +37,11 @@ export class Item{
         this.itemHTML.date.innerText = this.item.date
         this.itemHTML.city.innerText = this.item.locations.city
         this.itemHTML.country.innerText = this.item.locations.country
+    }
+
+    initDraggable = () => {
+        Draggable.create(this.card, {
+            
+        })
     }
 }
